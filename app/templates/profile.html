@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile Page{% endblock %}
+
+{% block content %}
+    {% if avatar %}
+        <img src="{{ url_for('static', filename='uploads/' + avatar) }}" width="150">
+    {% else %}
+        <p>No avatar uploaded</p>
+    {% endif %}
+
+    <h1>profile</h1>
+    <p>Username: {{ username }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Bio: {{ bio }}</p>
+    <form>
+        <input type="submit" formaction="/" value="logout">
+        <input type="submit" formaction="/settings" value="change">
+    </form>
+{% endblock %}

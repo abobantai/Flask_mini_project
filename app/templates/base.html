@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My App{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('auth.index') }}">Home</a> |
+        <a href="{{ url_for('auth.register') }}">Register</a> |
+        <a href="{{ url_for('auth.login') }}">Login</a> |
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+    </nav>
+
+    <hr>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</body>
+</html>
